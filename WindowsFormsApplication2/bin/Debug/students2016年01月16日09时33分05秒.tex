@@ -1,0 +1,69 @@
+% !Mode:: "TeX:UTF-8"
+\newproblem{t4-1}{\ifisflags \colorbox{black!20}{p\pageref{prob:t4-1} ,\ref{prob:t4-1}{\kai 题}}\hspace*{1ex}\fi \ifisyear (05,15 {\kai 分})\label{prob:t4-1}\fi 数字接收机如图\refa{fig:05-1-1}所示，设输入为等概分布的二进制单极性NRZ信号，幅度为1，输入等效噪声$n(t)$满足均匀分布、其概率密度函数为#13#10$f_n(x)=\left\{#13#10          \begin{array}{ll}#13#10            1-|x|, & -1\leqslant x \leqslant 1 \#13#10            0, & \text{其它}#13#10          \end{array}#13#10        \right.#13#10$。试求：#13#10\begin{enumerate}#13#10  \item 最佳判决电平$V_T$。#13#10  \item 最小误比特率$P_e$。#13#10\end{enumerate}#13#10\begin{figure}[htb]#13#10    \centering#13#10      \includegraphics[scale=1]{pics/05pics/05-1-1.pdf}#13#10#13#10    \caption{}#13#10    \labela{fig:05-1-1}#13#10  \end{figure}
+}{
+\begin{enumerate}#13#10  \item 因为输入为等概分布的二进制单极性NRZ信号且幅度为1，所以令#13#10  \[a_n=\left\{#13#10          \begin{array}{ll}#13#10            1, & y_{s_1}=1 \#13#10            0, & y_{s_0}=0#13#10          \end{array}#13#10        \right.#13#10  \]，则最佳判决电平$V_T=\frac{y_{s_1}+y_{s_0}}{2}=\frac{1}{2}$。#13#10  \item 最小误比特率：#13#10  \begin{eqnarray*}#13#10  % \nonumber to remove numbering (before each equation)#13#10    P_e &=& P(a_n=0)\cdot\int^{+\infty}_{V_T}f(r|0)\,\mathrm{d}r+ P(a_n=1)\cdot\int^{V_T}_{-\infty}f(r|1)\,\mathrm{d}r\#13#10     &=& \frac{1}{2}\int^{1}_{\frac{1}{2}}f_n(r-0)\,\mathrm{d}r+\frac{1}{2}\int_{0}^{\frac{1}{2}}f_n(r-1)\,\mathrm{d}r \#13#10     &=&  \frac{1}{2}\int^{1}_{\frac{1}{2}}(1-r)\,\mathrm{d}r+\frac{1}{2}\int_{0}^{\frac{1}{2}}r\,\mathrm{d}r\#13#10     &=& \frac{1}{8}#13#10  \end{eqnarray*}#13#10 \begin{parchment}[综述]#13#10   \begin{enumerate}#13#10      \item 这个题考察了接收系统的误码性能，要求求出最佳判决门限$V_T$和最小误比特率$P_e$，属于教材$P_{143}\sim P_{145}$的内容。#13#10      \item 一般来说，发$a_n=0$时的误码概率密度$f(r|0)=\frac{1}{\sqrt{2\pi}\sigma_n}\mathrm{e}^{-\frac{r-y_{s_0}}{2\sigma_n^2}}$，发$a_n=1$时的误码概率密度$f(r|1)=\frac{1}{\sqrt{2\pi}\sigma_n}\mathrm{e}^{-\frac{r-y_{s_1}}{2\sigma_n^2}}$，其中的$\sigma_n^2$为噪声功率。发$a_n=0$时出错的条件概率为$P(\mathrm{err}|a_n=0)=P(r\geqslant V_T|a_n=0)=\int^{+\infty}_{V_T}f(r|0)\,\mathrm{d}r$，发$a_n=1$时出错的条件概率为$P(\mathrm{err}|a_n=1)=P(r< V_T|a_n=1)=\int_{-\infty}^{V_T}f(r|0)\,\mathrm{d}r$。 总的误码率#13#10          \begin{eqnarray*}#13#10          % \nonumber to remove numbering (before each equation)#13#10           P_e  &=& P(a_n=1)\cdot P(\mathrm{err}|a_n=1)+P(a_n=0)\cdot P(\mathrm{err}|a_n=0) \#13#10             &=&  P(a_n=1)\cdot\int^{V_T}_{-\infty}f(r|1)\,\mathrm{d}r+P(a_n=0)\cdot\int^{+\infty}_{V_T}f(r|0)\,\mathrm{d}r#13#10          \end{eqnarray*}#13#10          系统最佳判决门限$V_T=\frac{y_{s_1}+y_{s_0}}{2}+\frac{\sigma_n^2}{y_{s_1}-y_{s_0}}\ln\frac{P(a_n=0)}{P(a_n=1)}$。 当二进制序列等概取值时，$V_T=\frac{y_{s_1}+y_{s_0}}{2}$，且有$P_e=Q\left(\frac{y_{s_1}-y_{s_0}}{2\sigma_n}\right)=Q\left(\sqrt{\frac{(y_{s_1}-y_{s_0})^2}{4\sigma_n^2}}\right)$。#13#10          \item 在本题中，误码概率密度函数不是通常的$f(r|0)$和$f(r|1)$，而是由题中给定的$f_n(x)$，因此计算$P_e$ 时，不能再套用$f(r|0)$和$f(r|1)$的表达式，而只能用题中给的$f_n(x)$的表达式。在2009年的第二题中考了类似的问题，方法完全一样。#13#10    \end{enumerate}#13#10 \end{parchment}#13#10\end{enumerate}}
+
+\newproblem{t3-1}{\ifisflags \colorbox{black!20}{p\pageref{prob:t3-1} ,\ref{prob:t3-1}{\kai 题}}\hspace*{1ex}\fi \ifisyear (05,15 {\kai 分})\label{prob:t3-1}\fi 发射机如图\refa{fig:05-2-1}所示，若输入测试信号为$m(t)=\cos(2\pi\times 10^3t)$，载波信号为$C(t)=\cos(2\pi\times 10^6t)$，带通滤波器的传递函数为
+$|H(f)|=\left\{
+          \begin{array}{ll}
+            1, & 10^6+500\leqslant|f|\leqslant 10^6+1500 \            0, & \text{其它}
+          \end{array}
+        \right.
+$，试求：
+\begin{enumerate}
+  \item 输出信号的时域表达式（正交表达式）。
+  \item 输出信号的平均功率。
+\end{enumerate}
+\begin{figure}[htb]
+    \centering
+      \includegraphics[scale=1]{pics/05pics/05-2-1.pdf}
+
+    \caption{}
+    \labela{fig:05-2-1}
+  \end{figure}
+}{
+\begin{enumerate}
+  \item 由题，设输入带通滤波器的信号为$x_{in}(t)$，则有
+  \begin{eqnarray*}
+  % \nonumber to remove numbering (before each equation)
+    x_{in}(t) &=& m(t)\cdot C(t) \     &=& \cos(2\pi\times10^3t)\cdot\cos(2\pi\times10^6t) \     &=& \frac{1}{2}[\cos(10^6+10^3)t+\cos2\pi(10^6-10^3)t]
+  \end{eqnarray*}
+  因为$x_{in}(t)$要通过传递函数为$|H(f)|=\left\{
+          \begin{array}{ll}
+            1, & 10^6+500\leqslant|f|\leqslant 10^6+1500 \            0, & \text{其它}
+          \end{array}
+        \right.$的带通滤波器。所以，输出的信号$s(t)=\frac{1}{2}\cos(10^6+10^3)t=\frac{1}{2}\cos(2\pi\times10^6t)\cdot\cos(2\pi\times10^3t)-\frac{1}{2}\sin(2\pi\times10^6t)\cdot\sin(2\pi\times10^3t)$
+  \item 由(a)问知，输出信号的平均功率$P=(\frac{1}{2})^2\cdot\frac{1}{2}=\frac{1}{8}$。
+\end{enumerate}
+\begin{parchment}
+  这个题考DSB调制和带通滤波器对信号频率的选通意义以及求简单的功率。
+\end{parchment}}
+
+\newproblem{t6-1}{\ifisflags \colorbox{black!20}{p\pageref{prob:t6-1} ,\ref{prob:t6-1}{\kai 题}}\hspace*{1ex}\fi \ifisyear (05,10{\kai 分})\label{prob:t6-1}\fi PCM系统输入模拟信号低通信号的带宽为$4\,\mathrm{kHz}$均匀量化器的量化范围为$(-1,1)\,\mathrm{V}$，若每个采样值用$8\,\mathrm{Bit}$二进制码表示，试求：
+\begin{enumerate}
+  \item 传输该PCM信号所需的最小带宽。
+  \item 在输入不过载且线路传输无误码的条件下，接收端恢复的模拟信号的峰值信噪比（信号峰值功率/噪声平均功率）。
+  \item 若因传输误码使峰值信噪比比无误码时降低$13\,\mathrm{dB}$，求误码率$P_e$。
+\end{enumerate}
+}{
+\begin{enumerate}
+  \item 由题，模拟低通信号带宽$B=4\,\mathrm{kHz}$，由采样定理得PCM 采样频率$f_s=2B=8\,\mathrm{kHz}$，则PCM信号比特率$R_b=nf_s=8\times8000=64\,\mathrm{kbps}$
+
+  设传输该PCM信号所需最小带宽为$B_T$，则由$R_b=2B_T$得$B_T=\frac{1}{2}R_b=32\,\mathrm{kHz}$。
+  \item 峰值信噪比$\left(\frac{S}{N}\right)_{q-pk}=6.02n+4.77=6.02\times8+4.77=52.93\,\mathrm{dB}$。
+  \item 设误码率为$P_e$，则由PCM传输系统的信噪比公式有：$\left(\frac{S}{N}\right)_{PCM-pk}=\frac{3M^2}{1+4(M^2-1)P_e}=52.93-13=39.93\,\mathrm{dB}\approx 40\,\mathrm{dB}$，代入$M=2^8$，解之，$P_e=7.12\times10^{-5}$。
+\end{enumerate}
+\begin{parchment}[综述]
+  \begin{enumerate}
+    \item PCM系统对输入的模拟信号离散化，对其进行抽样，量化编码处理。按模拟信号采样定理，PCM系统的采样频率$f_s$至少等于输入的模拟信号带宽的2倍，最后在信道中传输的PCM信号二进制比特流，其比特率$R_b=nf_s$，$n$为量化器的量化位数。PCM系统最后输出的是二进制的数字基带信号，设其通过的数字基带信号带宽为$B_T$，则要使码元彼此之间不存在码间串扰，必须使其比特率$R_b\leqslant 2B_T$。
+    \item 相关的公式：
+    \begin{enumerate}
+      \item 均匀量化器的信噪比：$\left(\frac{S}{N}\right)_{q-dB}=6.02n+4.77+10\log_{10}\frac{S}{V^2}$，其中$S$为信号的功率，$V$则为量化器的最大量化值。
+      \item 峰值信噪比：$\left(\frac{S}{N}\right)_{q-pk}=6.02n+4.77$。
+      \item 平均信噪比：$\left(\frac{S}{N}\right)_{qAvr-pk}=6.02n$。
+    \end{enumerate}
+    \item PCM传输系统的信噪比：$\left(\frac{S}{N}\right)_{PCM}\frac{(S/N)_q}{1+4(M^2-1)P_b}$，且有$\left(\frac{S}{N}\right)_{PCM-pk}=\frac{3M^2}{1+4(M^2-1)P_b}$，$\left(\frac{S}{N}\right)_{PCM-Avr}=\frac{M^2}{1+4(M^2-1)P_b}$。其中，$M$为量化电平数，$M=2^n$，$P_b$为误比特率。
+    \item 本题考PCM问题，是个高频考点，属于教材$P_{242}\sim P_{251}$的内容，已考过PCM问题的年份有05，06，08，11，12年。
+  \end{enumerate}
+\end{parchment}}
+
